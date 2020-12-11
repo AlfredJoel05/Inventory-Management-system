@@ -53,7 +53,7 @@ c = conn.cursor()
 # delete all rows from table
 res = c.execute('SELECT * FROM Product',);
 
-df = pd.DataFrame(res)
+df = pd.DataFrame(res, columns = ['Product_id','Product_Name','Product_QTY'])
 print(df)
 #commit the changes to db			
 conn.commit()

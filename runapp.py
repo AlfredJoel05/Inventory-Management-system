@@ -58,13 +58,18 @@ def Add():
         product_qty = request.form["product_qty"]
         location_name = request.form["location_name"]
         addProduct(product_name, product_qty)
+        addLocation(location_name)
         return redirect(url_for("home"))
     else:
         return render_template("Add.html")
 
 @app.route("/Edit", methods=['POST','GET'])
 def Edit():
-    return render_template("Edit.html")
+    if request.method == "GET":
+        dropdown =[i.product_name for i in Product.query.filter_by()]
+        return render_template("Edit.html", dropdown=dropdown)
+    else:
+        return render_template("Edit.html")
 
 @app.route("/View", methods=['POST','GET'])
 def View():
