@@ -9,14 +9,14 @@ db = SQLAlchemy(app)
 
 class Product(db.Model):
     product_id = db.Column(db.Integer, primary_key=True)
-    product_name = db.Column(db.String(100))
+    product_name = db.Column(db.String(100),unique=True)
     product_qty = db.Column(db.Integer)
     def __init__(self,product_name,product_qty):
         self.product_name = product_name
         self.product_qty = product_qty
 class Location(db.Model):
     location_id = db.Column(db.Integer, primary_key=True)
-    location_name = db.Column(db.String(100))
+    location_name = db.Column(db.String(100),unique=True)
     def __init__(self,location_name):
         self.product_name = location_name
 

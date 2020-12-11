@@ -94,15 +94,15 @@ p, h1 {
   cursor: pointer;
 }
 
-.productsChildWrapper:nth-child(1) {
+.productsChildWrapper1 {
   background-image: url("./assests/b1.png");
 }
 
-.productsChildWrapper:nth-child(2) {
+.productsChildWrapper2{
   background-image: url("./assests/b2.png");
 }
 
-.productsChildWrapper:nth-child(3) {
+.productsChildWrapper3 {
   background-image: url("./assests/b3.png");
 }
 
