@@ -3,16 +3,18 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQL_TRACK_MODIFICATIONS'] = False
-app.config['SQL_DATABASE_URI'] = 'sqlite:///inventory.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///inventory.db'
 
 db = SQLAlchemy(app)
 
 class Product(db.Model):
     product_id = db.Column(db.Integer, primary_key=True)
     product_name = db.Column(db.String(100))
-    def __init__(self,product_name):
+    product_qty = db.Column(db.Integer)
+    def __init__(self,product_name,product_qty):
         self.product_name = product_name
+        self.product_qty = product_qty
 class Location(db.Model):
     location_id = db.Column(db.Integer, primary_key=True)
     location_name = db.Column(db.String(100))
@@ -30,6 +32,8 @@ class Movement(db.Model):
         self.to_location = to_location
         self.quantity = quantity
 
-if __name__ == '__main__':
-    db.create_all()
-    app.run(debug=True)
+
+res=Product.query.all()
+
+db.session.commit()
+
