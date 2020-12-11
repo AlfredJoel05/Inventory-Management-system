@@ -4,8 +4,11 @@ import { history } from "../../history";
 export function Home() {
     return (
         <div className={"homeWrapper"}>
-            <p className={"heading"}>Designed by joel</p>
-            <h1 className={"topic"}>Inventory Management System</h1>
+            <p className={"heading"}>Designed by Alfred Joel</p>
+            <div className="topicWrapper">
+                <h1 className={"topic"}>Inventory Management</h1>
+                <h1 className={"topic2"}>System</h1>
+            </div>
             <div className={"productsWrapper"}>
                 <div className={"productsChildWrapper"} onClick={() => {
                     history.push("/add")

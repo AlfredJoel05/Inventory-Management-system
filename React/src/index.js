@@ -13,7 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router history={history}>
       <Switch>
-        <Route exact path={"/home"} component={Home} />
+        <Route exact path={"/"} component={Home} />
         <Route exact path={"/add"} component={Add} />
         <Route exact path={"/edit"} component={Edit} />
         <Route exact path={"/view"} component={View} />
