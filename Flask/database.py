@@ -32,8 +32,16 @@ class Movement(db.Model):
         self.to_location = to_location
         self.quantity = quantity
 
-
-res=Product.query.all()
-
+def addProduct(product_name, product_qty):
+    db.session.add(Product(product_name,product_qty))
+    res = Product.query.fetchall()
+    for i in res:
+        print(f'{i.product_id} ----- {i.product_name} ----- {i.product_qty}')
+def addLocation(location_name):
+    db.session.add(Location(location_name))
+def showTable(movement_table):
+    res = Movement.query.fetchall()
+    for i in res:
+        print(f'{i.movement_id} ----- {i.timestamp} ----- {i.from_location} ----- {i.to_location} ----- {i.qty}')
 db.session.commit()
 
