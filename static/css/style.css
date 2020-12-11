@@ -96,24 +96,122 @@ p, h1 {
 
 .productsChildWrapper1 {
   background-image: url("./assests/b1.png");
+  height: 500px;
+  width: 400px;
+  background-position: left center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  cursor: pointer;
+}
+.productsChildWrapper1 p{
+  margin-bottom: 8px;
+  font-size: 36px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  cursor: pointer;
+}
+
+.productsChildWrapper1 span{
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-family: 'Montserrat';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  cursor: pointer;
 }
 
 .productsChildWrapper2{
   background-image: url("./assests/b2.png");
-}
-
-.productsChildWrapper3 {
-  background-image: url("./assests/b3.png");
-}
-
-.productsChildWrapper p {
+  height: 500px;
+  width: 400px;
+  background-position: left center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  cursor: pointer;
   margin-bottom: 8px;
   font-size: 36px;
   font-weight: bold;
 }
 
-.productsChildWrapper span {
-  font-size: 15px;
+.productsChildWrapper2 p{
+  margin-bottom: 8px;
+  font-size: 36px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  cursor: pointer;
+}
+
+.productsChildWrapper2 span{
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: lighter;
+  font-family: 'Montserrat';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  cursor: pointer;
+}
+
+.productsChildWrapper3 {
+  background-image: url("./assests/b3.png");
+  height: 500px;
+  width: 400px;
+  background-position: left center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  cursor: pointer;
+
+}
+.productsChildWrapper3 p{
+  margin-bottom: 8px;
+  font-size: 36px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  cursor: pointer;
+}
+
+.productsChildWrapper3 span{
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-family: 'Montserrat';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  cursor: pointer;
 }
 
 /* add */
