@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "d:\\Python Files\\Projects\\Inventory Management System\\env\\Scripts\\python.exe"
+    "python.pythonPath": "d:\\Python Files\\Projects\\Inventory Management System\\env\\Scripts\\python.exe",
+    "python.analysis.extraPaths": ["D:\\Python Files\\Projects\\Inventory Management System\\Flask"]
 }
