@@ -36,12 +36,22 @@
             </div> 
         <div class="form">
             <h5>Select the Product</h5>
-            <select class="browser-default custom-select" name=dropdown method="get">
+            <select class="browser-default custom-select" name=dropdown_product method="get">
                 <option value="" disabled selected>Products</option>
-                {% for item in dropdown %}
+                {% for item in dropdown_product %}
                     <option value= "{{item}}" SELECTED>{{item}}</option>"
                 {% endfor %}
             </select>
+            <input type="text" class="form-field animation a3" name="update_product"  placeholder="Enter new value">
+            <h5>Select the Location</h5>
+            <select class="browser-default custom-select" name=dropdown_location method="get">
+                <option value="" disabled selected>Location</option>
+                {% for item in dropdow_location %}
+                    <option value= "{{item}}" SELECTED>{{item}}</option>"
+                {% endfor %}
+            </select>
+            <input type="text" class="form-field animation a3" name="update_location"  placeholder="Enter new value">
+            <button class="animation a6">UPDATE</button>
         </div>
         </div>
     </div>

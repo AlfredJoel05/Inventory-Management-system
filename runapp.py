@@ -19,7 +19,7 @@ class Location(db.Model):
     location_id = db.Column(db.Integer, primary_key=True)
     location_name = db.Column(db.String(100))
     def __init__(self,location_name):
-        self.product_name = location_name
+        self.location_name = location_name
 
 class Movement(db.Model):
     movement_id = db.Column(db.Integer, primary_key=True)
@@ -65,9 +65,11 @@ def Add():
 
 @app.route("/Edit", methods=['POST','GET'])
 def Edit():
+    dropdown_product =[i.product_name for i in Product.query.filter_by()]
+    dropdown_location =[i.location_name for i in Location.query.filter_by()]
     if request.method == "GET":
-        dropdown =[i.product_name for i in Product.query.filter_by()]
-        return render_template("Edit.html", dropdown=dropdown)
+        return render_template("Edit.html", dropdown_product=dropdown_product, dropdown_location=dropdown_location)
+        
     else:
         return render_template("Edit.html")
 
