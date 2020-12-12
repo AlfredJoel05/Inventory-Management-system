@@ -71,12 +71,13 @@ def Edit():
     dropdown_product =[i.product_name for i in Product.query.filter_by()]
     dropdown_location =[i.location_name for i in Location.query.filter_by()]
     if request.method == "GET":
-        product_name = request.args.get("item")
-        from_location = request.args.get("item")
-        to_location = request.args.get("item")
-        print(product_name, from_location, to_location)
         return render_template("Edit.html", dropdown_product=dropdown_product, dropdown_location=dropdown_location)
+
     elif request.method == "POST":
+        product_name = request.args.get("dropdown_product")
+        from_location = request.args.get("dropdown_product")
+        to_location = request.args.get("dropdown_product")
+        print(product_name, from_location, to_location)
         return redirect(url_for("home"))
 
 @app.route("/View", methods=['POST','GET'])
