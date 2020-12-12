@@ -40,6 +40,7 @@ def addProduct(product_name, product_qty):
         print(f'{i.product_id} ----- {i.product_name} ----- {i.product_qty}')
 def addLocation(location_name):
     db.session.add(Location(location_name))
+    db.session.commit()
 def showTable(movement_table):
     res = Movement.query.filter_by()
     for i in res:
