@@ -58,8 +58,10 @@ def Add():
         product_name = request.form["product_name"]
         product_qty = request.form["product_qty"]
         location_name = request.form["location_name"]
-        addProduct(product_name, product_qty)
-        addLocation(location_name)
+        if product_name != '' and product_qty != '':
+            addProduct(product_name, product_qty)
+        if location_name != '':
+            addLocation(location_name)
         return redirect(url_for("home"))
     else:
         return render_template("Add.html")
