@@ -37,26 +37,28 @@
         <div class="form">
             <h5>Select the Product</h5>
             <select class="browser-default custom-select" name=dropdown_product method="get">
-                <option value="" disabled selected hidden>Products</option>
+                <option value="" disabled selected >Products Lsit</option>
                 {% for item in dropdown_product %}
-                    <option value= "{{item}}" SELECTED>{{item}}</option>"
+                    <option value= "{{item}}">{{item}}</option>"
                 {% endfor %}
             </select>
             <input type="text" class="form-field animation a3" name="move_qty"  placeholder="Enter quantity">
             <h5>Select the Location</h5>
             <select class="browser-default custom-select" name=dropdown_location method="get">
-                <option value="" disabled selected hidden>Location</option>
-                {% for item in dropdow_location %}
-                    <option value= "{{item}}" SELECTED>{{item}}</option>"
+                <option value="" disabled selected>Location List</option>
+                {% for item in dropdown_location %}
+                    <option value= "{{item}}">{{item}}</option>"
                 {% endfor %}
             </select>
             <select class="browser-default custom-select" name=dropdown_location method="get">
-                <option value="" disabled selected hidden>Location</option>
-                {% for item in dropdow_location %}
-                    <option value= "{{item}}" SELECTED>{{item}}</option>"
+                <option value="" disabled selected>Location List</option>
+                {% for item in dropdown_location %}
+                    <option value= "{{item}}">{{item}}</option>"
                 {% endfor %}
             </select>
-            <button class="animation a6">SUBMIT</button>
+            <form method="post">
+                <button class="animation a6">SUBMIT</button>
+            </form>
         </div>
         </div>
     </div>
