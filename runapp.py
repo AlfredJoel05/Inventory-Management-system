@@ -77,8 +77,8 @@ def Edit():
 
     elif request.method == "POST":
         product_name = request.form["dropdown_product"]
-        from_location = request.form["dropdown_product"]
-        to_location= request.form["dropdown_product"]
+        from_location = request.form["dropdown_flocation"]
+        to_location= request.form["dropdown_tlocation"]
         
         return redirect(url_for("home"))
 @app.route("/View", methods=['POST','GET'])
