@@ -18,7 +18,7 @@ class Product(db.Model):
         self.product_qty = product_qty
 class Location(db.Model):
     location_id = db.Column(db.Integer, primary_key=True)
-    location_name = db.Column(db.String(100), nullable=False)
+    location_name = db.Column(db.String(100))
     def __init__(self,location_name):
         self.location_name = location_name
 
@@ -47,8 +47,13 @@ def showTable(movement_table):
     res = Movement.query.filter_by()
     for i in res:
         print(f'{i.movement_id} ----- {i.timestamp} ----- {i.from_location} ----- {i.to_location} ----- {i.qty}')
+def UpdateProduct(existing_product_name, updated_product_name):
+    q = Product.query.filter(Product.product_name == existing_product_name).first()
+    q.product_name = updated_product_name
+    print(q.product_name)
+    db.session.commit()
 
-####### APP-ROUTE #####
+############################################################### APP-ROUTE ##################################################################
 
 @app.route("/")
 def home():
@@ -82,10 +87,9 @@ def Edit():
             existing_location_name = request.form["dropdown_update_location"]
             updated_product_name = request.form["updated_product_name"]
             updated_location_name = request.form["updated_location_name"]
-            print(existing_product_name, existing_location_name, updated_product_name, updated_location_name)
+            UpdateProduct(existing_product_name, updated_product_name)
             return redirect(url_for("Edit"))
 
-        # elif request.form["btnsubmit"] == "btnsubmit":
         else:
             product_name = request.form["dropdown_product"]
             move_qty = request.form["move_qty"]
