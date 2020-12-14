@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -25,6 +26,7 @@ class Movement(db.Model):
     movement_id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, default = datetime.now().strftime('%d-%m-%Y %I:%M %p'))
     from_location = db.Column(db.String(100))
+    # prod_id = relationship("product_id", back_populates="Product")
     to_location = db.Column(db.String(100))
     quantity = db.Column(db.Integer)
     def __init__(self,from_location,to_location,quantity):
@@ -74,12 +76,11 @@ def Edit():
         return render_template("Edit.html", dropdown_product=dropdown_product, dropdown_location=dropdown_location)
 
     elif request.method == "POST":
-        product_name = request.args.get("dropdown_product")
-        from_location = request.args.get("dropdown_product")
-        to_location = request.args.get("dropdown_product")
-        print(product_name, from_location, to_location)
+        product_name = request.form["dropdown_product"]
+        from_location = request.form["dropdown_product"]
+        to_location= request.form["dropdown_product"]
+        
         return redirect(url_for("home"))
-
 @app.route("/View", methods=['POST','GET'])
 def View():
     return render_template("View.html")
