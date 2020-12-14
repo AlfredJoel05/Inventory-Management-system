@@ -77,17 +77,21 @@ def Edit():
                                 dropdown_product=dropdown_product, dropdown_from_location=dropdown_location ,dropdown_to_location=dropdown_location)
 
     elif request.method == "POST":
-        if request.form["Btnupdate"] == "Btnupdate":
+        if request.form.get("btnupdate"):
+            existing_product_name = request.form["dropdown_update_product"]
+            existing_location_name = request.form["dropdown_update_location"]
             updated_product_name = request.form["updated_product_name"]
             updated_location_name = request.form["updated_location_name"]
-            print(updated_product_name, updated_location_name)
+            print(existing_product_name, existing_location_name, updated_product_name, updated_location_name)
             return redirect(url_for("Edit"))
 
+        # elif request.form["btnsubmit"] == "btnsubmit":
         else:
             product_name = request.form["dropdown_product"]
+            move_qty = request.form["move_qty"]
             from_location = request.form["dropdown_from_location"]
             to_location= request.form["dropdown_to_location"]
-            print(product_name, from_location, to_location)
+            print(product_name, from_location, to_location, move_qty)
             return redirect(url_for("home"))
 
 @app.route("/View", methods=['POST','GET'])

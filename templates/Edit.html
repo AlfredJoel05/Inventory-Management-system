@@ -31,13 +31,13 @@
                 <input type="text" class="form-field animation a3" name="updated_product_name"  placeholder="Enter New Name">
                 <br>
                 <h5>Update Location</h5>
-                <select id="dropdown_floaction" class="browser-default custom-select" name="updated_location_name" method="get">
+                <select id="dropdown_floaction" class="browser-default custom-select" name="dropdown_update_location" method="get">
                     <option value="" disabled selected>Locations</option>
                     {% for item in dropdown_update_location %}
                         <option value= "{{item}}">{{item}}</option>"
                     {% endfor %}
                 </select>
-                <input type="text" class="form-field animation a3" name="updated_product_name"  placeholder="Enter New Name">
+                <input type="text" class="form-field animation a3" name="updated_location_name"  placeholder="Enter New Name">
                 <button class="animation a6" name="btnupdate" value="btnupdate">UPDATE</button>
                 </div>
             </form>
@@ -68,7 +68,7 @@
                             <option value= "{{item}}">{{item}}</option>"
                         {% endfor %}
                     </select>
-                    <button class="animation a6" name="btnsubmit" value="btnupdate">SUBMIT</button>
+                    <button class="animation a6" name="btnsubmit" value="btnsubmit">SUBMIT</button>
                     </div>
                 </form>
         </div>
