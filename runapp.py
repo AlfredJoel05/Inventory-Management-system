@@ -52,6 +52,12 @@ def UpdateProduct(existing_product_name, updated_product_name):
     q.product_name = updated_product_name
     print(q.product_name)
     db.session.commit()
+def UpdateLocation(existing_location_name, updated_location_name):
+    q = Location.query.filter(Location.location_name == existing_location_name).first()
+    q.location_name = updated_location_name
+    print(q.location_name)
+    db.session.commit()
+db.session.close()
 
 ############################################################### APP-ROUTE ##################################################################
 
@@ -83,11 +89,12 @@ def Edit():
 
     elif request.method == "POST":
         if request.form.get("btnupdate"):
-            existing_product_name = request.form["dropdown_update_product"]
-            existing_location_name = request.form["dropdown_update_location"]
-            updated_product_name = request.form["updated_product_name"]
-            updated_location_name = request.form["updated_location_name"]
+            existing_product_name = request.form.get("dropdown_update_product")
+            existing_location_name = request.form.get("dropdown_update_location")
+            updated_product_name = request.form.get("updated_product_name")
+            updated_location_name = request.form.get("updated_location_name")
             UpdateProduct(existing_product_name, updated_product_name)
+            UpdateLocation(existing_location_name, updated_location_name)
             return redirect(url_for("Edit"))
 
         else:
