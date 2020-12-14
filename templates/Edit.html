@@ -21,7 +21,7 @@
             <br>
         <form method="post">
             <div class="form">
-                <h5>Update Product</h5>
+                <h5>Update Product and Quantity</h5>
                 <select class="browser-default custom-select" name="dropdown_update_product" method="get">
                     <option value="" disabled selected ></option>
                     {% for item in dropdown_product %}
@@ -29,6 +29,7 @@
                     {% endfor %}
                 </select>
                 <input type="text" class="form-field animation a3" name="updated_product_name"  placeholder="Enter New Name">
+                <input type="text" class="form-field animation a3" name="updated_qty"  placeholder="Enter New Quattity">
                 <br>
                 <h5>Update Location</h5>
                 <select id="dropdown_floaction" class="browser-default custom-select" name="dropdown_update_location" method="get">
@@ -56,14 +57,14 @@
                     <br>
                     <h5>Select the Location</h5>
                     <select id="dropdown_floaction" class="browser-default custom-select" name="dropdown_from_location" method="get">
-                        <option value="" disabled selected>From Location List</option>
+                        <option value="" disabled selected>From Location</option>
                         {% for item in dropdown_from_location %}
                             <option value= "{{item}}">{{item}}</option>
                         {% endfor %}
                     </select>
                     <br>
                     <select id="dropdown_tloaction" class="browser-default custom-select" name="dropdown_to_location" method="get">
-                        <option value="" disabled selected>To Location List</option>
+                        <option value="" disabled selected>To Location</option>
                         {% for item in dropdown_to_location %}
                             <option value= "{{item}}">{{item}}</option>
                         {% endfor %}
