@@ -1,6 +1,10 @@
-* { box-sizing: border-box; }
+*{ 
+  box-sizing: border-box; 
+  margin: 0;  
+}
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 body {
   font-family: 'Rubik', sans-serif;
@@ -9,6 +13,7 @@ body {
 
 h5{
   font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
   text-align: center;
 }
 .container {
@@ -20,6 +25,7 @@ h5{
 
 .left {
   overflow: hidden;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,7 +46,7 @@ h5{
 }
 
 .form {
-  max-width: 80%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
 }

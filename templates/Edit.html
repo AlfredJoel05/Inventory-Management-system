@@ -18,32 +18,59 @@
             <div class="header">
             <h2 class="animation a1">Edit Products and Location</h2>
             </div> 
+            <br>
         <form method="post">
-        <div class="form">
-            <h5>Select the Product</h5>
-            <select id="dropdown_product" class="browser-default custom-select" name="dropdown_product" method="get">
-                <option value="" disabled selected >Products List</option>
-                {% for item in dropdown_product %}
-                    <option value= "{{item}}">{{item}}</option>"
-                {% endfor %}
-            </select>
-            <input type="text" class="form-field animation a3" name="move_qty"  placeholder="Enter quantity">
-            <h5>Select the Location</h5>
-            <select id="dropdown_floaction" class="browser-default custom-select" name="dropdown_flocation" method="get">
-                <option value="" disabled selected>From Location List</option>
-                {% for item in dropdown_location %}
-                    <option value= "{{item}}">{{item}}</option>"
-                {% endfor %}
-            </select>
-            <select id="dropdown_tloaction" class="browser-default custom-select" name="dropdown_tlocation" method="get">
-                <option value="" disabled selected>To Location List</option>
-                {% for item in dropdown_location %}
-                    <option value= "{{item}}">{{item}}</option>"
-                {% endfor %}
-            </select>
-            <button id="btnsubmit" class="animation a6">SUBMIT</button>
-            </div>
+            <div class="form">
+                <h5>Update Product</h5>
+                <select class="browser-default custom-select" name="dropdown_update_product" method="get">
+                    <option value="" disabled selected ></option>
+                    {% for item in dropdown_product %}
+                        <option value= "{{item}}">{{item}}</option>"
+                    {% endfor %}
+                </select>
+                <input type="text" class="form-field animation a3" name="updated_product_name"  placeholder="Enter New Name">
+                <br>
+                <h5>Update Location</h5>
+                <select id="dropdown_floaction" class="browser-default custom-select" name="updated_location_name" method="get">
+                    <option value="" disabled selected>Locations</option>
+                    {% for item in dropdown_update_location %}
+                        <option value= "{{item}}">{{item}}</option>"
+                    {% endfor %}
+                </select>
+                <input type="text" class="form-field animation a3" name="updated_product_name"  placeholder="Enter New Name">
+                <button class="animation a6" name="btnupdate" value="btnupdate">UPDATE</button>
+                </div>
             </form>
+            <br>
+            <br>
+            <form method="post">
+                <div class="form">
+                    <h5>Move Product</h5>
+                    <select id="dropdown_product" class="browser-default custom-select" name="dropdown_product" method="get">
+                        <option value="" disabled selected >Products List</option>
+                        {% for item in dropdown_product %}
+                            <option value= "{{item}}">{{item}}</option>"
+                        {% endfor %}
+                    </select>
+                    <input type="text" class="form-field animation a3" name="move_qty"  placeholder="Enter quantity">
+                    <br>
+                    <h5>Select the Location</h5>
+                    <select id="dropdown_floaction" class="browser-default custom-select" name="dropdown_from_location" method="get">
+                        <option value="" disabled selected>From Location List</option>
+                        {% for item in dropdown_from_location %}
+                            <option value= "{{item}}">{{item}}</option>"
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <select id="dropdown_tloaction" class="browser-default custom-select" name="dropdown_to_location" method="get">
+                        <option value="" disabled selected>To Location List</option>
+                        {% for item in dropdown_to_location %}
+                            <option value= "{{item}}">{{item}}</option>"
+                        {% endfor %}
+                    </select>
+                    <button class="animation a6" name="btnsubmit" value="btnupdate">SUBMIT</button>
+                    </div>
+                </form>
         </div>
     </div>    
     

@@ -11,24 +11,24 @@ db = SQLAlchemy(app)
 
 class Product(db.Model):
     product_id = db.Column(db.Integer, primary_key=True)
-    product_name = db.Column(db.String(100))
-    product_qty = db.Column(db.Integer)
+    product_name = db.Column(db.String(100), nullable=False)
+    product_qty = db.Column(db.Integer, nullable=False)
     def __init__(self,product_name,product_qty):
         self.product_name = product_name
         self.product_qty = product_qty
 class Location(db.Model):
     location_id = db.Column(db.Integer, primary_key=True)
-    location_name = db.Column(db.String(100))
+    location_name = db.Column(db.String(100), nullable=False)
     def __init__(self,location_name):
         self.location_name = location_name
 
 class Movement(db.Model):
     movement_id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, default = datetime.now().strftime('%d-%m-%Y %I:%M %p'))
-    from_location = db.Column(db.String(100))
+    from_location = db.Column(db.String(100), nullable=False)
     # prod_id = relationship("product_id", back_populates="Product")
-    to_location = db.Column(db.String(100))
-    quantity = db.Column(db.Integer)
+    to_location = db.Column(db.String(100), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
     def __init__(self,from_location,to_location,quantity):
         self.from_location = from_location
         self.to_location = to_location
@@ -73,14 +73,23 @@ def Edit():
     dropdown_product =[i.product_name for i in Product.query.filter_by()]
     dropdown_location =[i.location_name for i in Location.query.filter_by()]
     if request.method == "GET":
-        return render_template("Edit.html", dropdown_product=dropdown_product, dropdown_location=dropdown_location)
+        return render_template("Edit.html", dropdown_update_product=dropdown_product, dropdown_update_location=dropdown_location,
+                                dropdown_product=dropdown_product, dropdown_from_location=dropdown_location ,dropdown_to_location=dropdown_location)
 
     elif request.method == "POST":
-        product_name = request.form["dropdown_product"]
-        from_location = request.form["dropdown_flocation"]
-        to_location= request.form["dropdown_tlocation"]
-        
-        return redirect(url_for("home"))
+        if request.form["Btnupdate"] == "Btnupdate":
+            updated_product_name = request.form["updated_product_name"]
+            updated_location_name = request.form["updated_location_name"]
+            print(updated_product_name, updated_location_name)
+            return redirect(url_for("Edit"))
+
+        else:
+            product_name = request.form["dropdown_product"]
+            from_location = request.form["dropdown_from_location"]
+            to_location= request.form["dropdown_to_location"]
+            print(product_name, from_location, to_location)
+            return redirect(url_for("home"))
+
 @app.route("/View", methods=['POST','GET'])
 def View():
     return render_template("View.html")
