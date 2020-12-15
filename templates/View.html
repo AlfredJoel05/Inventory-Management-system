@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/view.css">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Balance Table</h2>
+    <div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Location</th>
+        </tr>
+        </thead>
+        <tbody name="items">
+        {% for i in items %}
+            <tr>
+                {% for j in i %}
+                    <td>{{j}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        <tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -58,14 +58,12 @@ def addMovement(product_name, from_location, to_location, move_qty):
     product_id = q.product_id
     db.session.add(Movement(product_id, product_name, from_location, to_location, move_qty))
     db.session.commit()
-def showTable():
-    res = Movement.query.filter_by()
-    for i in res:
-        print(f'{i.movement_id} ----- {i.timestamp} ----- {i.from_location} ----- {i.to_location} ----- {i.qty}')
+
 def UpdateProduct(existing_product_name, updated_product_name, updated_qty):
     q = Product.query.filter(Product.product_name == existing_product_name).first()
     q.product_name = updated_product_name
-    q.product_qty = updated_qty
+    if updated_qty != None:
+        q.product_qty = updated_qty
     db.session.commit()
 def UpdateLocation(existing_location_name, updated_location_name):
     q = Location.query.filter(Location.location_name == existing_location_name).first()
@@ -110,8 +108,10 @@ def Edit():
             updated_product_name = request.form.get("updated_product_name")
             updated_location_name = request.form.get("updated_location_name")
             updated_qty = request.form.get("updated_qty")
-            UpdateProduct(existing_product_name, updated_product_name, updated_qty)
-            UpdateLocation(existing_location_name, updated_location_name)
+            if updated_product_name != '' and existing_product_name!= '':
+                UpdateProduct(existing_product_name, updated_product_name, updated_qty)
+            if updated_location_name != '' and existing_location_name!= '':
+                UpdateLocation(existing_location_name, updated_location_name)
             return redirect(url_for("Edit"))
 
         else:
@@ -124,7 +124,17 @@ def Edit():
 
 @app.route("/View", methods=['POST','GET'])
 def View():
-    return render_template("View.html")
+    dropdown_product =[i.product_name for i in Product.query.filter_by()]
+    dropdown_location =[i.location_name for i in Location.query.filter_by()]
+    dropdown_qty =[i.product_qty for i in Product.query.filter_by()]
+    items = []
+    for i in zip(dropdown_product, dropdown_location, dropdown_qty):
+        items.append(i)
+
+    if request.method == 'GET':
+        return render_template("View.html", items=items)
+    else:
+        return redirect(url_for("home"))
 
 if __name__ == '__main__':
     app.run(debug=True)

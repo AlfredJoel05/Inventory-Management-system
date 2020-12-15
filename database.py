@@ -16,45 +16,17 @@
 #         self.product_qty = product_qty
 # class Location(db.Model):
 #     location_id = db.Column(db.Integer, primary_key=True)
-#     location_name = db.Column(db.String(100),unique=True)
-#     def __init__(self,location_name):
-#         self.product_name = location_name
-
-# class Movement(db.Model):
-#     movement_id = db.Column(db.Integer, primary_key=True)
-#     timestamp = db.Column(db.DateTime, default = datetime.now().strftime('%d-%m-%Y %I:%M %p'))
-#     from_location = db.Column(db.String(100))
-#     to_location = db.Column(db.String(100))
-#     quantity = db.Column(db.Integer)
-#     def __init__(self,from_location,to_location,quantity):
-#         self.from_location = from_location
-#         self.to_location = to_location
-#         self.quantity = quantity
-
-# def addProduct(product_name, product_qty):
-#     db.session.add(Product(product_name,product_qty))
-#     db.session.commit()
-#     res = db.Product.query.fetchall()
-#     for i in res:
-#         print(f'{i.product_id} ----- {i.product_name} ----- {i.product_qty}')
-# def addLocation(location_name):
-#     db.session.add(Location(location_name))
-# def showTable(movement_table):
-#     res = Movement.query.fetchall()
-#     for i in res:
-#         print(f'{i.movement_id} ----- {i.timestamp} ----- {i.from_location} ----- {i.to_location} ----- {i.qty}')
-
 import sqlite3
 import pandas as pd
 
 conn = sqlite3.connect('inventory.db')
 c = conn.cursor()
 
-# delete all rows from table
-res = c.execute("PRAGMA table_info(Movement)");
+res = c.execute("SELECT * FROM Movement");
 # df = pd.DataFrame(res, columns = ['Product_id','Product_Name','Product_QTY'])
 # df = pd.DataFrame(res, columns = ['Location_id','Location_Name'])
-# print(df)
+df = pd.DataFrame(res, columns = ['movement_id','product_id', 'timestamp', 'product_name', 'from_location', 'to_location', 'move_qty'])
+print(df)
 
 #commit the changes to db			
 conn.commit()
