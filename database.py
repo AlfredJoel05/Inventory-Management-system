@@ -51,12 +51,11 @@ conn = sqlite3.connect('inventory.db')
 c = conn.cursor()
 
 # delete all rows from table
-res = c.execute('SELECT * FROM Location');
-
+res = c.execute("PRAGMA table_info(Movement)");
 # df = pd.DataFrame(res, columns = ['Product_id','Product_Name','Product_QTY'])
+# df = pd.DataFrame(res, columns = ['Location_id','Location_Name'])
+# print(df)
 
-df = pd.DataFrame(res, columns = ['Location_id','Location_Name'])
-print(df)
 #commit the changes to db			
 conn.commit()
 #close the connection

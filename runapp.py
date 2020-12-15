@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
+from sqlalchemy.sql.schema import ForeignKey
+
 
 app = Flask(__name__)
 
@@ -29,18 +31,18 @@ class Location(db.Model):
 class Movement(db.Model):
     __tablename__ = 'Movement'
     movement_id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.Integer, nullable=False) 
+    prod_id = db.Column(db.Integer, nullable = False)
     timestamp = db.Column(db.String(100), default = datetime.now().strftime('%d-%m-%Y %I:%M %p'))
     product_name = db.Column(db.String(100), nullable=False)
     from_location = db.Column(db.String(100), nullable=False)
     to_location = db.Column(db.String(100), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
-    def __init__(self, product_id, product_name, from_location, to_location,move_qty):
-        self.product_id = product_id
+    def __init__(self, prod_id, product_name, from_location, to_location, move_qty):
+        self.prod_id = prod_id
         self.product_name = product_name
         self.from_location = from_location
         self.to_location = to_location
-        self.move_qty = move_qty
+        self.quantity = move_qty
 
 def addProduct(product_name, product_qty):
     db.session.add(Product(product_name,product_qty))
@@ -69,6 +71,8 @@ def UpdateLocation(existing_location_name, updated_location_name):
     q = Location.query.filter(Location.location_name == existing_location_name).first()
     q.location_name = updated_location_name
     db.session.commit()
+
+db.session.commit()
 db.session.close()
 
 ############################################################### APP-ROUTE ##################################################################
@@ -112,10 +116,10 @@ def Edit():
 
         else:
             product_name = request.form["dropdown_product"]
-            move_qty = request.form["move_qty"]
+            move_qty = request.form.get("move_qty")
             from_location = request.form["dropdown_from_location"]
             to_location= request.form["dropdown_to_location"]
-            addMovement(product_name, from_location, to_location, move_qty)          
+            addMovement(product_name, from_location, to_location, int(move_qty))
             return redirect(url_for("home"))
 
 @app.route("/View", methods=['POST','GET'])
